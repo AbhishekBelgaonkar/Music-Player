@@ -22,6 +22,9 @@ def play():
 	song = f'C:/Users/abhis/Documents/GitHub/Music-Player/music player/music/{song}.mp3'
 	pygame.mixer.music.load(song)
 	pygame.mixer.music.play(loops = 0)
+def stop():
+	pygame.mixer.music.stop()
+	songbox.selection_clear(ACTIVE)
 songbox = Listbox(root, bg= "white", fg="black", width = 60, selectbackground = "grey", selectforeground = "black")
 songbox.pack(pady = 20)
 # music control buttons
@@ -36,7 +39,7 @@ controls_frame.pack()
 # music button work
 back_button = Button(controls_frame, image = back_btn_img, borderwidth = 0)
 forward_button = Button(controls_frame, image = forward_btn_img , borderwidth = 0)
-stop_button = Button(controls_frame, image = stop_btn_img, borderwidth = 0)
+stop_button = Button(controls_frame, image = stop_btn_img, borderwidth = 0, command = stop)
 pause_button = Button(controls_frame, image = pause_btn_img, borderwidth = 0)
 play_button = Button(controls_frame, image = play_btn_img, borderwidth = 0, command = play)
 
