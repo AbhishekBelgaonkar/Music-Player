@@ -1,7 +1,8 @@
 from tkinter import *
-from pygame import mixer
-import pygame
 from tkinter import filedialog
+import pygame
+from pygame import mixer
+
 pygame.mixer.init()
 root = Tk()
 root.title("MP3 Player")
@@ -16,7 +17,12 @@ def addsong():
 	song = song.replace("C:/Users/abhis/Documents/GitHub/Music-Player/music player/music/", "")
 	song = song.replace(".mp3","")
 	songbox.insert(END, song)
-songbox = Listbox(root, bg= "white", fg="red", width = 60)
+def play():
+	song = songbox.get(ACTIVE)
+	song = f'C:/Users/abhis/Documents/GitHub/Music-Player/music player/music/{song}.mp3'
+	pygame.mixer.music.load(song)
+	pygame.mixer.music.play(loops = 0)
+songbox = Listbox(root, bg= "white", fg="black", width = 60, selectbackground = "grey", selectforeground = "black")
 songbox.pack(pady = 20)
 # music control buttons
 back_btn_img = PhotoImage(file = 'images/back.png')
@@ -32,7 +38,7 @@ back_button = Button(controls_frame, image = back_btn_img, borderwidth = 0)
 forward_button = Button(controls_frame, image = forward_btn_img , borderwidth = 0)
 stop_button = Button(controls_frame, image = stop_btn_img, borderwidth = 0)
 pause_button = Button(controls_frame, image = pause_btn_img, borderwidth = 0)
-play_button = Button(controls_frame, image = play_btn_img, borderwidth = 0)
+play_button = Button(controls_frame, image = play_btn_img, borderwidth = 0, command = play)
 
 back_button.grid(row = 0, column = 0, padx = 10)
 stop_button.grid(row = 0, column = 1, padx = 10)
