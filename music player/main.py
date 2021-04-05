@@ -69,16 +69,4 @@ root.config(menu = my_menu)
 add_song_menu = Menu(my_menu)
 my_menu.add_cascade(label = "add songs", menu = add_song_menu)
 add_song_menu.add_command(label = "add 1 song to playlist", command = addsong)
-
-
-
-
-'''
-def play_music():
-    mixer.music.load("music/Giorno Theme (Trap Remix).mp3")
-    mixer.music.play()
-playPhoto = PhotoImage(file="images/Play-Music-icon.png")
-playBtn = Button(root, image=playPhoto, borderwidth=0, command = play_music)
-playBtn.pack()
-'''
 root.mainloop()
