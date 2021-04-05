@@ -25,6 +25,17 @@ def play():
 def stop():
 	pygame.mixer.music.stop()
 	songbox.selection_clear(ACTIVE)
+global paused
+paused = False
+def pause(is_paused):
+	global paused
+	paused = is_paused
+	if paused:
+		pygame.mixer.music.unpause()
+		paused = False
+	else :
+		pygame.mixer.music.pause()
+		paused = True	
 songbox = Listbox(root, bg= "white", fg="black", width = 60, selectbackground = "grey", selectforeground = "black")
 songbox.pack(pady = 20)
 # music control buttons
@@ -40,7 +51,7 @@ controls_frame.pack()
 back_button = Button(controls_frame, image = back_btn_img, borderwidth = 0)
 forward_button = Button(controls_frame, image = forward_btn_img , borderwidth = 0)
 stop_button = Button(controls_frame, image = stop_btn_img, borderwidth = 0, command = stop)
-pause_button = Button(controls_frame, image = pause_btn_img, borderwidth = 0)
+pause_button = Button(controls_frame, image = pause_btn_img, borderwidth = 0, command = lambda : pause(paused))
 play_button = Button(controls_frame, image = play_btn_img, borderwidth = 0, command = play)
 
 back_button.grid(row = 0, column = 0, padx = 10)
